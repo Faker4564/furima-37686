@@ -45,7 +45,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :delivery
+- has_one :shipping
 
 ## shippings table
 
