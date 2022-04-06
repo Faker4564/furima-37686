@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'fleamarkets/index'
+  devise_for :users
   root to: "fleamarkets#index"
 end
