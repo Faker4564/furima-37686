@@ -8,7 +8,6 @@ class BuyShipping
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :city
     validates :block
-    validates :building
     validates :tel, numericality: { only_integer: true, }, length: { minimum: 10, maximum: 11 }
     #validates :token
   end
