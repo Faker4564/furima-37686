@@ -6,7 +6,7 @@ RSpec.describe BuyShipping, type: :model do
   end
   describe '配送先情報登録'
     context '配送先情報を登録できるとき' do
-      it 'postcodeとprefecture_idとcityとblockとtelがあれば登録できる' do
+      it 'postcodeとprefecture_idとcityとblockとtelとtokenがあれば登録できる' do
         expect(@buy_shipping).to be_valid
       end
       it 'buildingがなくても登録できる' do
@@ -55,6 +55,11 @@ RSpec.describe BuyShipping, type: :model do
         @buy_shipping.tel = '090-1234-5678'
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Tel is not a number", "Tel is too long (maximum is 11 characters)")
+      end
+      it 'tokenが空では登録できない' do
+        @buy_shipping.token = ''
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Token can't be blank")
       end
     end
 
