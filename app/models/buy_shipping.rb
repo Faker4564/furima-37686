@@ -17,7 +17,7 @@ class BuyShipping
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
-    Shipping.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, tel: tel, token: token, buy_id: buy.id)
+    Shipping.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, tel: tel, buy_id: buy.id)
   end
 
 end
