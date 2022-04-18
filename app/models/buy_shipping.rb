@@ -1,6 +1,6 @@
 class BuyShipping
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :block, :building, :tel
+  attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :block, :building, :tel, :token
 
   with_options presence: true do
     validates :user_id
@@ -9,7 +9,7 @@ class BuyShipping
     validates :city
     validates :block
     validates :tel, numericality: { only_integer: true, }, length: { minimum: 10, maximum: 11 }
-    #validates :token
+    validates :token
   end
 
   VALID_POSTCODE_REGEX = /\A\d{3}[-]\d{4}\z/
@@ -17,7 +17,7 @@ class BuyShipping
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
-    Shipping.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, tel: tel, buy_id: buy.id)
+    Shipping.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, tel: tel, token: token, buy_id: buy.id)
   end
 
 end
