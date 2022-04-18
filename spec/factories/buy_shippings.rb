@@ -7,8 +7,6 @@ FactoryBot.define do
     block                 { address.town.to_s }
     building              { 'test' }
     tel                   { '09012345678' }
-    user_id               { Faker::Number.non_zero_digit }
-    item_id               { Faker::Number.non_zero_digit }
     token                 {"tok_abcdefghijk00000000000000000"}
   end
 end
